@@ -98,8 +98,9 @@ class PostgresManager {
   Future<List<Map<String, dynamic>>> execute(String query,
       {Map<String, dynamic>? parameters}) async {
     try {
-      if (!_connection!.isOpen) {
+      if (_connection!.isOpen == false) {
         debugPrint('Reconnecting to the PostgreSQL database...');
+        await close();
         await connect();
       }
       final result = parameters == null
