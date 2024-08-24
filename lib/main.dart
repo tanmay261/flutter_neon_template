@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neon_template/routes.dart';
 import 'package:flutter_neon_template/utils/neon_connection.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
+      routerConfig: router,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -42,7 +44,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
