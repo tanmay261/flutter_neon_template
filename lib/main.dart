@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:postgres/postgres.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -56,8 +60,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    debugPrint("Inside InitState");
+    debugPrint(dotenv.env['NEON_HOST']);
+  }
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -66,6 +76,16 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+    final conn = await Connection.open(
+        Endpoint(
+          host: dotenv.env['NEON_HOST']!,
+          database: dotenv.env['NEON_DATABASE']!,
+          username: dotenv.env['NEON_USERNAME']!,
+          password: dotenv.env['NEON_PASSWORD']!,
+        ),
+        settings: const ConnectionSettings(sslMode: SslMode.require));
+    final result = await conn.execute('SELECT version()');
+    print(result.first.toColumnMap());
   }
 
   @override
