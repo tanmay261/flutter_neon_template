@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:postgres/postgres.dart';
+import 'package:flutter_neon_template/utils/neon_connection.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+late final PostgresManager postgresConnectionManager;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+
+  // make sure the env is loaded before connecting
+  postgresConnectionManager = PostgresManager();
+  await postgresConnectionManager.connect();
+
   runApp(const MyApp());
 }
 
@@ -63,8 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    debugPrint("Inside InitState");
-    debugPrint(dotenv.env['NEON_HOST']);
   }
 
   void _incrementCounter() async {
@@ -76,16 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-    final conn = await Connection.open(
-        Endpoint(
-          host: dotenv.env['NEON_HOST']!,
-          database: dotenv.env['NEON_DATABASE']!,
-          username: dotenv.env['NEON_USERNAME']!,
-          password: dotenv.env['NEON_PASSWORD']!,
-        ),
-        settings: const ConnectionSettings(sslMode: SslMode.require));
-    final result = await conn.execute('SELECT version()');
-    print(result.first.toColumnMap());
+
+    final result = await postgresConnectionManager.execute('SELECT version()');
+
+    print(result.first);
   }
 
   @override
