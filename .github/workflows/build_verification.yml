@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '12'
+          distribution: 'adopt'
 
       - uses: subosito/flutter-action@v2
         with:
@@ -31,6 +32,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '12'
+          distribution: 'adopt'
 
       - uses: subosito/flutter-action@v2
         with:
@@ -51,6 +53,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '12'
+          distribution: 'adopt'
 
       - uses: subosito/flutter-action@v2
         with:
@@ -71,6 +74,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '12'
+          distribution: 'adopt'
 
       - uses: subosito/flutter-action@v2
         with:
