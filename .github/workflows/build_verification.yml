@@ -15,7 +15,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.24.1'
           channel: stable
 
       - name: Run Flutter Format
@@ -36,7 +36,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.24.1'
           channel: stable
 
       - name: Run Flutter Analyze
@@ -57,7 +57,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.24.1'
           channel: stable
 
       - name: Run Flutter Tests
@@ -78,7 +78,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.24.1'
           channel: stable
 
       - name: Build APK
