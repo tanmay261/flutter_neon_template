@@ -38,15 +38,15 @@ ThemeData lightMode = ThemeData(
   colorScheme: lightColorScheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(
+      backgroundColor: WidgetStateProperty.all<Color>(
         lightColorScheme.primary, // Slightly darker shade for the button
       ),
       foregroundColor:
-          MaterialStateProperty.all<Color>(Colors.white), // text color
-      elevation: MaterialStateProperty.all<double>(5.0), // shadow
-      padding: MaterialStateProperty.all<EdgeInsets>(
+          WidgetStateProperty.all<Color>(Colors.white), // text color
+      elevation: WidgetStateProperty.all<double>(5.0), // shadow
+      padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(horizontal: 20, vertical: 18)),
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16), // Adjust as needed
         ),
