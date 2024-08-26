@@ -258,10 +258,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             PhosphorIcons.appleLogo(),
                             size: 32.0,
                           )
-                          // Logo(Logos.facebook_f),
-                          // Logo(Logos.twitter),
-                          // Logo(Logos.google),
-                          // Logo(Logos.apple),
                         ],
                       ),
                       const SizedBox(

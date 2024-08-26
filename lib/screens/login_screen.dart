@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neon_template/screens/home_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'signup_screen.dart';
 import 'package:flutter_neon_template/widgets/custom_scaffold.dart';
@@ -155,22 +156,13 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignInKey.currentState!.validate() &&
-                                rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Processing Data'),
-                                ),
-                              );
-                            } else if (!rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        'Please agree to the processing of personal data')),
-                              );
-                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Homescreen()),
+                            );
                           },
-                          child: const Text('Sign up'),
+                          child: const Text('Sign in'),
                         ),
                       ),
                       const SizedBox(
@@ -227,10 +219,6 @@ class _SignInScreenState extends State<SignInScreen> {
                             PhosphorIcons.appleLogo(),
                             size: 32.0,
                           )
-                          // Logo(Logos.facebook_f),
-                          // Logo(Logos.twitter),
-                          // Logo(Logos.google),
-                          // Logo(Logos.apple),
                         ],
                       ),
                       const SizedBox(
