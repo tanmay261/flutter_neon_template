@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   icons_plus: ^5.0.0
   phosphor_flutter: ^2.1.0
+  fl_chart: ^0.68.0
+  firebase_auth: ^4.16.0
 
 dev_dependencies:
   flutter_test:
