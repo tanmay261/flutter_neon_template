@@ -3,14 +3,16 @@ import 'package:flutter_neon_template/routes.dart';
 import 'package:flutter_neon_template/themes/theme.dart';
 import 'package:flutter_neon_template/utils/neon_connection.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_neon_template/providers/theme_provider.dart'; // Import your ThemeProvider
 
 late final PostgresManager postgresConnectionManager;
 
-Future main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
 
-  // make sure the env is loaded before connecting
+  // Initialize and connect to Postgres
   postgresConnectionManager = PostgresManager();
   await postgresConnectionManager.connect();
 
@@ -20,16 +22,23 @@ Future main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter Demo',
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      theme: lightMode,
-      darkTheme: darkMode,
-      themeMode: ThemeMode.system,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(), // Initialize ThemeProvider
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            routerConfig: router,
+            debugShowCheckedModeBanner: false,
+            theme: lightMode,
+            darkTheme: darkMode,
+            themeMode:
+                themeProvider.themeMode, // Use ThemeProvider for themeMode
+          );
+        },
+      ),
     );
   }
 }

@@ -11,8 +11,8 @@ class FeedScreen extends StatelessWidget {
       return minRadius + (value / maxValue) * (maxRadius - minRadius);
     }
 
-    const double minRadius = 30.0; // Minimum radius
-    const double maxRadius = 80.0; // Maximum radius
+    const double minRadius = 30.0;
+    const double maxRadius = 80.0;
     const double maxValue = 30.0;
     var chartData = PieChartData(sections: [
       PieChartSectionData(

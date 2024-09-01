@@ -5,8 +5,8 @@ import 'package:flutter_neon_template/bloc/profile/profile_bloc.dart';
 import 'package:flutter_neon_template/bloc/profile/profile_event.dart';
 import 'package:flutter_neon_template/bloc/profile/profile_state.dart';
 
-class Profilescreen extends StatelessWidget {
-  const Profilescreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class Profilescreen extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(10),
             children: [
-              // COLUMN THAT WILL CONTAIN THE PROFILE
               const Column(
                 children: [
                   CircleAvatar(
