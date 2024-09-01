@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neon_template/screens/home_screen.dart';
+// import 'package:flutter_neon_template/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'signup_screen.dart';
 import 'package:flutter_neon_template/widgets/custom_scaffold.dart';
-import 'package:flutter_neon_template/themes/theme.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -16,24 +15,22 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final _formSignInKey = GlobalKey<FormState>();
   bool rememberPassword = true;
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return CustomScaffold(
       child: Column(
         children: [
-          const Expanded(
-            flex: 1,
-            child: SizedBox(
-              height: 10,
-            ),
-          ),
           Expanded(
             flex: 7,
             child: Container(
               padding: const EdgeInsets.fromLTRB(25.0, 50.0, 25.0, 20.0),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: colorScheme.surface, // Background color from theme
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 ),
@@ -49,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
-                          color: lightColorScheme.primary,
+                          color: colorScheme.primary,
                         ),
                       ),
                       const SizedBox(
@@ -65,18 +62,18 @@ class _SignInScreenState extends State<SignInScreen> {
                         decoration: InputDecoration(
                           label: const Text('Email'),
                           hintText: 'Enter Email',
-                          hintStyle: const TextStyle(
-                            color: Colors.black26,
+                          hintStyle: TextStyle(
+                            color: colorScheme.onSurface.withOpacity(0.6),
                           ),
                           border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
+                            borderSide: BorderSide(
+                              color: colorScheme.outline,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
+                            borderSide: BorderSide(
+                              color: colorScheme.outline,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -97,18 +94,18 @@ class _SignInScreenState extends State<SignInScreen> {
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           hintText: 'Enter Password',
-                          hintStyle: const TextStyle(
-                            color: Colors.black26,
+                          hintStyle: TextStyle(
+                            color: colorScheme.onSurface.withOpacity(0.6),
                           ),
                           border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
+                            borderSide: BorderSide(
+                              color: colorScheme.outline,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
+                            borderSide: BorderSide(
+                              color: colorScheme.outline,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -129,12 +126,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                     rememberPassword = value!;
                                   });
                                 },
-                                activeColor: lightColorScheme.primary,
+                                activeColor: colorScheme.primary,
                               ),
-                              const Text(
+                              Text(
                                 'Remember me',
                                 style: TextStyle(
-                                  color: Colors.black45,
+                                  color: colorScheme.onSurface.withOpacity(0.7),
                                 ),
                               ),
                             ],
@@ -144,7 +141,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               'Forget password?',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
+                                color: colorScheme.primary,
                               ),
                             ),
                           ),
@@ -157,8 +154,17 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                              GoRouter.of(context).go('/home');
+                            GoRouter.of(context).go('/home');
                           },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorScheme.primary,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           child: const Text('Sign in'),
                         ),
                       ),
@@ -171,25 +177,25 @@ class _SignInScreenState extends State<SignInScreen> {
                           Expanded(
                             child: Divider(
                               thickness: 0.7,
-                              color: Colors.grey.withOpacity(0.5),
+                              color: colorScheme.onSurface.withOpacity(0.5),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 0,
                               horizontal: 10,
                             ),
                             child: Text(
                               'Sign up with',
                               style: TextStyle(
-                                color: Colors.black45,
+                                color: colorScheme.onSurface,
                               ),
                             ),
                           ),
                           Expanded(
                             child: Divider(
                               thickness: 0.7,
-                              color: Colors.grey.withOpacity(0.5),
+                              color: colorScheme.onSurface.withOpacity(0.5),
                             ),
                           ),
                         ],
@@ -203,25 +209,28 @@ class _SignInScreenState extends State<SignInScreen> {
                           Icon(
                             PhosphorIcons.messengerLogo(),
                             size: 32.0,
+                            color: colorScheme.onSurface,
                           ),
                           Icon(
                             PhosphorIcons.xLogo(),
                             size: 32.0,
+                            color: colorScheme.onSurface,
                           ),
                           Icon(
                             PhosphorIcons.googleLogo(),
                             size: 32.0,
+                            color: colorScheme.onSurface,
                           ),
                           Icon(
                             PhosphorIcons.appleLogo(),
                             size: 32.0,
+                            color: colorScheme.onSurface,
                           )
                         ],
                       ),
                       const SizedBox(
                         height: 25.0,
                       ),
-                      // don't have an account
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -244,7 +253,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               'Sign up',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
+                                color: colorScheme.primary,
                               ),
                             ),
                           ),
