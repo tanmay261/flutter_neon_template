@@ -133,18 +133,20 @@ class _HomescreenState extends State<Homescreen> {
           ],
         ),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        children: const <Widget>[
-          FeedScreen(),
-          ProfileScreen(),
-          SettingsScreen(),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          children: const <Widget>[
+            FeedScreen(),
+            ProfileScreen(),
+            SettingsScreen(),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [

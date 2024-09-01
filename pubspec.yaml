@@ -42,7 +42,10 @@ dependencies:
   phosphor_flutter: ^2.1.0
   fl_chart: ^0.68.0
   firebase_auth: ^4.16.0
+  crypto: ^3.0.5
+  flutter_bloc: ^8.1.6
   provider: ^6.1.2
+  flutter_secure_storage: ^9.2.2
 
 dev_dependencies:
   flutter_test:

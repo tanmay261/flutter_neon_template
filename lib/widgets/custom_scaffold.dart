@@ -9,19 +9,14 @@ class CustomScaffold extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: colorScheme.onSurface),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      extendBodyBehindAppBar: true,
-      body: Stack(
-        children: [
-          SafeArea(
-            child: child!,
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: colorScheme.onSurface),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        extendBodyBehindAppBar: true,
+        body: SafeArea(
+          child: child!,
+        ));
   }
 }
