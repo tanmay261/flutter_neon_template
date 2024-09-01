@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neon_template/screens/home_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'signup_screen.dart';
 import 'package:flutter_neon_template/widgets/custom_scaffold.dart';
@@ -156,11 +157,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Homescreen()),
-                            );
+                              GoRouter.of(context).go('/home');
                           },
                           child: const Text('Sign in'),
                         ),
