@@ -8,6 +8,28 @@ class SimpleOrm<T> {
 
   SimpleOrm(this.connection, this.tableName, this.fromMap);
 
+  Future<void> createTableIfNotExists(
+      String tableName, Map<String, String> fieldMappings) async {
+    final fieldDefinitions = fieldMappings.entries
+        .map((entry) => '${entry.key} ${entry.value}')
+        .join(', ');
+
+    final createTableQuery = '''
+    CREATE TABLE IF NOT EXISTS $tableName (
+      $fieldDefinitions
+    );
+    ''';
+
+    try {
+      debugPrint('Creating table: $createTableQuery');
+      await connection.execute(createTableQuery);
+      debugPrint('Table created successfully.');
+    } catch (e) {
+      debugPrint('Failed to create table: $e');
+      rethrow;
+    }
+  }
+
   /// Fetch all records from the specified table.
   Future<List<T>> fetchAll() async {
     try {

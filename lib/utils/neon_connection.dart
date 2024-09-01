@@ -131,4 +131,16 @@ class PostgresManager {
       rethrow;
     }
   }
+
+  /// Fetch Postgres Connection
+  ///
+  /// Returns the Postgres Connection object
+  ///
+  /// Throws a [PostgreSQLException] if the connection is not established.
+  Connection? getConnection() {
+    if (_connection == null) {
+      throw Error();
+    }
+    return _connection;
+  }
 }
