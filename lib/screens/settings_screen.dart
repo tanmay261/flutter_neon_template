@@ -1,12 +1,15 @@
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neon_template/widgets/custom_list._tile.dart';
+import 'package:flutter_neon_template/widgets/custom_list_tile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
       body: ListView(
         children: List.generate(
@@ -17,11 +20,22 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 5),
               child: Card(
                 elevation: 4,
-                shadowColor: Colors.black12,
+                shadowColor: colorScheme.shadow,
                 child: ListTile(
-                  leading: Icon(tile.icon),
-                  title: Text(tile.title),
-                  trailing: const Icon(Icons.chevron_right),
+                  leading: Icon(
+                    tile.icon,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    tile.title,
+                    style: TextStyle(
+                      color: colorScheme.onSurface,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    color: colorScheme.primary,
+                  ),
                 ),
               ),
             );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'package:flutter_neon_template/themes/theme.dart';
 import 'signup_screen.dart';
 import 'package:flutter_neon_template/widgets/custom_scaffold.dart';
 import 'package:flutter_neon_template/widgets/welcome_button.dart';
@@ -10,6 +9,8 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return CustomScaffold(
       child: Column(
         children: [
@@ -23,19 +24,21 @@ class WelcomeScreen extends StatelessWidget {
                 child: Center(
                   child: RichText(
                     textAlign: TextAlign.center,
-                    text: const TextSpan(
+                    text: TextSpan(
                       children: [
                         TextSpan(
                             text: 'Welcome Back!\n',
                             style: TextStyle(
                               fontSize: 45.0,
                               fontWeight: FontWeight.w600,
+                              color: colorScheme.onSurface,
                             )),
                         TextSpan(
                             text: '\nEnter your details',
                             style: TextStyle(
                               fontSize: 20,
                               // height: 0,
+                              color: colorScheme.onSurface,
                             ))
                       ],
                     ),
@@ -48,20 +51,20 @@ class WelcomeScreen extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: WelcomeButton(
                       buttonText: 'Sign in',
-                      onTap: SignInScreen(),
+                      onTap: const SignInScreen(),
                       color: Colors.transparent,
-                      textColor: Colors.white,
+                      textColor: colorScheme.onSurface,
                     ),
                   ),
                   Expanded(
                     child: WelcomeButton(
                       buttonText: 'Sign up',
                       onTap: const SignUpScreen(),
-                      color: Colors.white,
-                      textColor: lightColorScheme.primary,
+                      color: colorScheme.primary,
+                      textColor: colorScheme.onPrimary,
                     ),
                   ),
                 ],

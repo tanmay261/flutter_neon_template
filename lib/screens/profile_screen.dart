@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Profilescreen extends StatelessWidget {
-  const Profilescreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,6 @@ class Profilescreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          // COLUMN THAT WILL CONTAIN THE PROFILE
           const Column(
             children: [
               CircleAvatar(

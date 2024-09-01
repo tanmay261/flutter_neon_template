@@ -3,6 +3,8 @@ import 'package:flutter_neon_template/screens/feed_screen.dart';
 import 'package:flutter_neon_template/screens/profile_screen.dart';
 import 'package:flutter_neon_template/screens/settings_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_neon_template/providers/theme_provider.dart'; // Import your ThemeProvider
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -12,7 +14,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   final PageController _pageController = PageController();
 
   void _onItemTapped(int index) {
@@ -25,15 +27,26 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
+    final themeProvider =
+        Provider.of<ThemeProvider>(context); // Access ThemeProvider
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'),
+        title: Text(
+          'Home Screen',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            color: theme.onSurface,
+          ),
+        ),
         leading: Builder(
           builder: (context) {
             return IconButton(
               icon: Icon(
                 PhosphorIcons.list(),
                 size: 23.0,
+                color: theme.onSurface,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -41,71 +54,79 @@ class _HomescreenState extends State<Homescreen> {
             );
           },
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              themeProvider.themeMode == ThemeMode.light
+                  ? PhosphorIcons.moon()
+                  : PhosphorIcons.sun(),
+              color: theme.onSurface,
+            ),
+            onPressed: () {
+              themeProvider.toggleTheme(); // Toggle the theme
+            },
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                      'assets/images/drawer_bg.jpg'), // Replace with your background image path
+                  image: AssetImage(themeProvider.themeMode == ThemeMode.dark
+                      ? 'assets/images/dark_bg.jpg'
+                      : 'assets/images/light_bg.png'), // Change image based on theme
                   fit: BoxFit.cover,
                 ),
-                color:
-                    Colors.transparent, // Optional: adjust based on your design
+                color: theme.surface, // surface color of the header
               ),
               child: Column(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 40,
-                    backgroundImage: AssetImage(
-                        'assets/images/avatar_img.jpg'), // Replace with your avatar image path
+                    backgroundImage: AssetImage('assets/images/avatar_img.jpg'),
                   ),
-                  SizedBox(height: 1),
+                  const SizedBox(height: 5),
                   Text(
                     'Your Name',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                      color: theme.onSurface,
+                      fontSize: 20.0,
                     ),
                   ),
                   Text(
                     'Your Title',
                     style: TextStyle(
-                      color: Colors.white54,
-                      fontSize: 16,
+                      color: theme.onSurface.withOpacity(0.7),
+                      fontSize: 10.0,
                     ),
                   ),
                 ],
               ),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: Text('Item 1', style: TextStyle(color: theme.onSurface)),
               onTap: () {
-                // Handle item 1 tap
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: Text('Item 2', style: TextStyle(color: theme.onSurface)),
               onTap: () {
-                // Handle item 2 tap
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Item 3'),
+              title: Text('Item 3', style: TextStyle(color: theme.onSurface)),
               onTap: () {
-                // Handle item 3 tap
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Item 4'),
+              title: Text('Item 4', style: TextStyle(color: theme.onSurface)),
               onTap: () {
-                // Handle item 4 tap
                 Navigator.pop(context);
               },
             ),
@@ -121,7 +142,7 @@ class _HomescreenState extends State<Homescreen> {
         },
         children: const <Widget>[
           FeedScreen(),
-          Profilescreen(),
+          ProfileScreen(),
           SettingsScreen(),
         ],
       ),
@@ -131,7 +152,6 @@ class _HomescreenState extends State<Homescreen> {
             icon: Icon(
               PhosphorIcons.house(),
               size: 23.0,
-              color: theme.primary,
             ),
             label: 'Home',
           ),
