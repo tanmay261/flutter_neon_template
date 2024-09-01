@@ -1,15 +1,15 @@
 class User {
-  final int id;
-  final String name;
-  final String email;
-  final String dob;
-  final String? password;
+  int? id;
+  String? name;
+  String email;
+  DateTime? dob;
+  String? password;
 
   User({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     required this.email,
-    required this.dob,
+    this.dob,
     this.password,
   });
 
@@ -19,17 +19,66 @@ class User {
       id: map['id'] as int,
       name: map['name'] as String,
       email: map['email'] as String,
-      dob: map['dob'] as String,
+      dob: map['dob'] as DateTime,
+    );
+  }
+
+  // Factory method to create a User from a map (fromMap).
+  factory User.fromSignInMap(Map<String, dynamic> map) {
+    return User(
+      email: map['email'] as String,
+      password: map['password'] as String,
+    );
+  }
+
+  factory User.fromSignUpMap(Map<String, dynamic> map) {
+    return User(
+      email: map['email'] as String,
+      password: map['password'] as String,
+    );
+  }
+
+  factory User.fromUpdateMap(Map<String, dynamic> map) {
+    return User(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      email: map['email'] as String,
+      dob: map['dob'] as DateTime,
     );
   }
 
   // Method to convert a User to a map (toMap).
   Map<String, dynamic> toMap() {
+    if (id != null) {
+      return {
+        'id': id,
+        'name': name,
+        'email': email,
+        'dob': dob!.toIso8601String(),
+      };
+    }
     return {
-      'id': id,
       'name': name,
       'email': email,
-      'dob': dob,
+      'dob': dob!.toIso8601String(),
+    };
+  }
+
+  // Method to create a user while authentication.
+  Map<String, dynamic> toSignInMap() {
+    return {
+      'email': email,
+      'password': password,
+    };
+  }
+
+  // Method to create a user while registration.
+  Map<String, dynamic> toSignUpMap() {
+    return {
+      'name': name,
+      'email': email,
+      'dob': dob!.toIso8601String(),
+      'password': password,
     };
   }
 }

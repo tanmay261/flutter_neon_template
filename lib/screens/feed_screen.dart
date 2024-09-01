@@ -47,12 +47,15 @@ class FeedScreen extends StatelessWidget {
           color: Colors.purple),
     ]);
     return Scaffold(
-      body: ListView(children: [
-        SizedBox(
-          height: 300,
-          child: PieChart(chartData),
-        ),
-      ]),
-    );
+        body: SafeArea(
+      child: Center(
+        child: ListView(children: [
+          SizedBox(
+            height: 300,
+            child: PieChart(chartData),
+          ),
+        ]),
+      ),
+    ));
   }
 }

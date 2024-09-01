@@ -6,7 +6,7 @@ class UserRepository {
   final SimpleOrm<User> orm;
 
   final Map<String, String> userFieldMappings = {
-    'id': 'SERIAL PRIMARY KEY',
+    'id': 'SERIAL PRIMARY KEY' /* Autoincrementing */,
     'name': 'VARCHAR(255) NOT NULL',
     'email': 'VARCHAR(255) UNIQUE NOT NULL',
     'dob': 'DATE NOT NULL',
@@ -21,6 +21,14 @@ class UserRepository {
         );
 
   Future<User?> findUserById(int id) => orm.findById(id);
+
+  Future<User?> findUserByEmail(String email) async {
+    final User? user = await orm.findOneWhere(substitutionValues: {
+      'email': email,
+    });
+
+    return user;
+  }
 
   Future<void> insertUser(User user) => orm.insert(user.toMap());
 

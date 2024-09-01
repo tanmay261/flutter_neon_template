@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neon_template/bloc/profile/profile_event.dart';
 import 'package:flutter_neon_template/bloc/profile/profile_state.dart';
+import 'package:flutter_neon_template/constants.dart';
+import 'package:flutter_neon_template/main.dart';
 import 'package:flutter_neon_template/models/user_model.dart';
 import 'package:flutter_neon_template/service/user_service.dart';
 
@@ -22,7 +24,12 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
 
     try {
       // Fetch the user profile from your service
-      userProfile = (await fetchUserProfile())!;
+      final int userId = int.parse(
+          await secureStorage.read(key: USER_SECURE_STORAGE_KEY) ?? '-1');
+      if (userId == -1) {
+        throw Exception('User ID not found');
+      }
+      userProfile = (await fetchUserProfile(userId))!;
       userProfileStatus = UserProfileStatus.loaded;
 
       emit(
