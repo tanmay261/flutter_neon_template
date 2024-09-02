@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
     }
 
     // Perform sign-in logic here
-    try{
+    try {
       final User? user = await login(User(email: email, password: password));
       if (user != null) {
         await login(user);

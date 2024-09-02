@@ -38,12 +38,11 @@ Future<User?> loginVerify(String email, String password) async {
   }
 }
 
-
 Future login(User user) async {
   // Log in the user by storing the user ID in secure storage
   debugPrint('Logging in user');
   final User? createdUser = await userRepository.findUserByEmail(user.email);
-  if(createdUser!.password != hashPassword(user.password!)){
+  if (createdUser!.password != hashPassword(user.password!)) {
     debugPrint("Invalid password");
     throw Exception('Invalid password.Please try again');
   }
@@ -66,9 +65,7 @@ Future<User?> registerUser(User user) async {
   return createdUser;
 }
 
-
 Future<void> logoutUser() async {
   // Log out the user by deleting the user ID from secure storage
   await secureStorage.delete(key: USER_SECURE_STORAGE_KEY);
 }
-
