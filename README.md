@@ -70,7 +70,7 @@ The Neon Open Source Starter Kit provides a robust foundation to accelerate the 
 
 ## Usage
 
-### 👷‍♂️ Usage
+### 👷‍♂️ How To Run
 
 ```sh
 flutter run
