@@ -70,12 +70,25 @@ The Neon Open Source Starter Kit provides a robust foundation to accelerate the 
 
 ## Usage
 
-### How to use the app
+### 👷‍♂️ Usage
 
-```bash
+```sh
 flutter run
 ```
 
+### ✨ Format code
+
+```sh
+dart format .
+```
+
+### 🧪 Test
+
+```sh
+flutter analyze .
+flutter test
+```
+  
 
 ## Codebase Overview
 
@@ -111,6 +124,18 @@ flutter_neon_template/
         └── build_verification.yml  # GitHub Actions workflow configuration
 ```
 
+## 🤝 Contributing
+
+issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/tanmay261/flutter_neon_template/issues), the [contribution guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Show your support <img alt="GitHub stars" src="https://img.shields.io/github/stars/tanmay261/flutter_neon_template?style=social">
+
+Give a ⭐️ if this project helped/inspired you!
+
+## 📝 License
+
+Copyright © 2024 [Manas & Tanmay](https://manasgupta.vercel.app/).<br />
+This project is [MIT](https://raw.githubusercontent.com/tanmay261/flutter_neon_template/main/LICENSE?token=GHSAT0AAAAAACL633P7NBW4YRTJD46TQOUCZWVANEA) licensed.
 
 
 
