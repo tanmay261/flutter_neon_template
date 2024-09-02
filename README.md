@@ -1,4 +1,4 @@
-# Neon Open Source Starter Kit
+# Neon Open Source Flutter Starter Kit
 
 We are thrilled to present the Neon Open Source Starter Kit, crafted as part of the Neon Open Source Starter Kit Challenge. This starter kit is designed to offer a comprehensive, scalable foundation for building Flutter applications, optimized for PostgreSQL on Neon.
 
@@ -38,7 +38,46 @@ The Neon Open Source Starter Kit provides a robust foundation to accelerate the 
 - [**Flutter SDK:**](https://docs.flutter.dev/get-started/install) Ensure Flutter is installed on your machine.
 - [**Postgres on Neon :**](https://neon.tech/) Access to Neon for PostgreSQL database.
 
+### Installation
+1. Clone the repository:
+   
+   ```bash
+   git clone https://github.com/tanmay261/flutter_neon_template.git
+   ```
+3. Navigate to the project directory:
+   
+   ```bash
+    cd flutter_neon_template
+   ```
+4. Install dependencies:
+   
+    ```bash
+    flutter pub get
+    ```
+**Note:** Feel Free to do a ```search and replace(Ctrl+Shift+H or ⇧⌘H)``` to give desired name to your app
 
+### Configuration
+
+1. Create a .env file in the root directory and add the following configuration:
+   
+   ```
+    NEON_HOST=
+    NEON_DATABASE=
+    NEON_USERNAME=
+    NEON_PASSWORD=
+   ```
+
+
+## Usage
+
+### How to use the app
+
+```bash
+flutter run
+```
+
+
+## Codebase Overview
 
 ### Directory Structure
 
