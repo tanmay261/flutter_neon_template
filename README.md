@@ -1,6 +1,6 @@
 # Neon Open Source Flutter Starter Kit
 
-We are thrilled to present the Neon Open Source Starter Kit, crafted as part of the Neon Open Source Starter Kit Challenge. This starter kit is designed to offer a comprehensive, scalable foundation for building Flutter applications, optimized for PostgreSQL on Neon.
+We are thrilled to present the Neon Open Source Starter Kit, crafted as part of the Neon Open Source Starter Kit Challenge. This starter kit is designed to offer a comprehensive for building Flutter applications, optimized for PostgreSQL on Neon and is made targeting users who just want to make quick app with flutter.
 
 ## Overview
 
