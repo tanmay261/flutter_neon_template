@@ -67,6 +67,8 @@ The Neon Open Source Starter Kit provides a robust foundation to accelerate the 
     NEON_PASSWORD=
    ```
 
+**Note:** make sure to uncomment the ```.env``` under assets in [pubspec.yaml](https://github.com/tanmay261/flutter_neon_template/blob/bff9c4ae57bb0b175b3f9eeb592363abce98a8a6/pubspec.yaml#L73)
+
 
 ## Usage
 
